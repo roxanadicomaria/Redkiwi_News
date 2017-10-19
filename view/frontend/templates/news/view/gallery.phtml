@@ -1,0 +1,20 @@
+<?php   
+$items = $block->getGalleryItems();
+if ($items && count($items)) : ?>
+<div class="gallery">
+    <ul>
+        <?php foreach ($items as $item): ?>
+        <li class="item">
+            <?php if($item->getLink()): ?>
+            <a href="<?php echo $item->getLink(); ?>" title="<?php echo $item->getTitle(); ?>">
+            <?php endif; ?>
+                <img src="<?php echo $block->getImageUrl($item, 400, 300);?>" alt="<?php echo $item->getTitle(); ?>" title="<?php echo $item->getTitle(); ?>" />
+                <h3><?php echo $item->getTitle(); ?></h3>
+            <?php if($item->getLink()): ?>
+            </a>
+            <?php endif; ?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif;

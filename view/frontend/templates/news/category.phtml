@@ -1,0 +1,9 @@
+<?php $category = $block->getCurrentCategory(); ?>
+<div class="category-view">
+    <div class="no-display"><?php echo $category->getTitle() ?></div>
+    <?php if ($category->getContent()): ?>
+    <div class="category-description">
+        <?php echo $block->getContent($category); ?>
+    </div>
+    <?php endif; ?>
+</div>

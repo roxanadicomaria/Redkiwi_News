@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="redkiwi" translate="label" sortOrder="210">
+            <label>Redkiwi</label>
+        </tab>
+        <section id="redkiwi_news" type="text" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>News</label>
+            <tab>redkiwi</tab>
+            <resource>Redkiwi_News::system_config</resource>
+            <group id="general" type="text" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>                               
+                <field id="title" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                    <comment>Fill title of list page</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="url_key" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>News URL Key</label>
+                    <comment>Fill URL key for the list page</comment>
+                    <validate>required-entry validate-xml-identifier</validate>
+                </field>
+                <field id="description" translate="label comment" type="editor" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">                    
+                    <frontend_model>Redkiwi\News\Block\Adminhtml\System\Config\Editor</frontend_model>
+                    <label>Description</label>
+                    <comment>Fill description for list page</comment>
+                </field>                
+                <field id="allowed_items" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allowed items per page</label>
+                    <comment>Add comma separated numbers, that a user can choose from, for the items per page</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="facebook_id" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook App ID</label>
+                    <comment><![CDATA[Fill the Facebook App ID optained from <a href="https://developers.facebook.com/apps/">https://developers.facebook.com/apps/</a>. Create a new app if you don't have one. This is used for comments plugin and share button.]]></comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="comments" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Comments?</label>                    
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> 
+                <field id="share_on" translate="label" type="multiselect" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Share News On</label>                    
+                    <source_model>Redkiwi\News\Model\Config\Source\Share</source_model>
+                </field>
+                <field id="default_image" translate="label" type="image" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Image</label>
+                    <backend_model>Redkiwi\News\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">news/item</base_url>
+                    <upload_dir config="system/filesystem/media" scope_info="1">news/item</upload_dir>
+                    <comment>
+                        <![CDATA[Your default image will be used as a placeholder for news image on list.<br />Allowed file types: PNG, GIF, JPG, JPEG, TIFF.]]>
+                    </comment>
+                </field>
+
+            </group>
+            <group id="seo" type="text" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Search Engine Optimization</label>                
+                <field id="title" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Title</label>
+                    <comment>Fill meta title of list page</comment>
+                </field>
+                <field id="description" translate="label comment" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>
+                    <comment>Fill meta description for list page</comment>
+                </field>                
+                <field id="keywords" translate="label comment" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Keywords</label>
+                    <comment>Fill meta keywords for list page</comment>
+                </field>
+            </group>
+            <group id="cms" type="text" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>CMS Pages Box</label>                
+                <field id="title" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Box Title</label>
+                </field>
+                <field id="cms_list" translate="label comment tooltip" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>List with CMS Pages</label>
+                    <frontend_model>Redkiwi\News\Block\System\Config\Form\Field\Cmslist</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment><![CDATA[Add CMS pages to a box on the right column]]></comment>
+                    <tooltip><![CDATA[Set the list item title, and the CMS page to which the item will be linked.]]></tooltip>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

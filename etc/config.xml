@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <redkiwi_news>
+            <general>
+                <title>News</title>
+                <url_key>news</url_key>
+                <description><![CDATA[<p>Latest news related to our products!</p>]]></description>
+                <allowed_items>3,5,9,12</allowed_items>
+                <facebook_id>230264723691376</facebook_id>
+                <comments>1</comments>
+                <share_on>facebook,twitter,google,pinterest</share_on>
+            </general>
+            <seo>
+                <title>News</title>
+                <description>Fresh dummy news</description>
+                <keywords>news, fresh news, informations</keywords>
+            </seo>
+        </redkiwi_news>
+    </default>
+</config>

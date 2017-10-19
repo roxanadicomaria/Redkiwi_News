@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="redkiwi_news_list" class="Redkiwi\News\Block\Widget\News" is_email_compatible="true" placeholder_image="Redkiwi_News::images/widget_latest_news.png">
+        <label translate="true">Latest News Widget</label>
+        <description translate="true">List with latest news for all categories or a specific category</description>
+        <parameters>
+            <parameter name="category_id" xsi:type="block" visible="true" sort_order="10">
+                <label translate="true">News Category</label>
+                <description translate="true">If empty, latest news will be taken from all categories</description>
+                <block class="Redkiwi\News\Block\Adminhtml\Category\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Category...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="limit" xsi:type="text" visible="true" required="true" sort_order="20">
+                <label translate="true">Number of latest news</label>
+                <value>5</value>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true" sort_order="30">
+                <label translate="true">List Title</label>
+            </parameter>
+            <parameter name="show_image" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="40">
+                <label translate="true">Display Thumbnail Image</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

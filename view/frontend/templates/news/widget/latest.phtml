@@ -1,0 +1,38 @@
+<div class="latest-news-widget">
+    <?php if ($block->getTitle()): ?>
+    <div class="title">
+        <h3><?php echo $block->getTitle(); ?></h3>
+    </div>
+    <?php endif; ?>
+    <div class="items">
+        <?php
+        $itemsCollection = $block->getNewsCollection();
+        if ($itemsCollection->getSize() > 0) :
+            ?>
+            <ul>
+                <?php foreach ($itemsCollection as $item) : ?>
+                    <li itemscope itemtype="http://schema.org/Article">                    
+                        <div class="item-content">
+                            <a class="item-title" href="<?php echo $block->getItemUrl($item); ?>">
+                                <h4 itemprop="name"><?php echo $item->getTitle() ?></h4>
+                            </a>
+                            <div class="author-date">
+                                <span class="author"><?php echo __('by'); ?> <span itemprop="author"><?php echo $item->getAuthor(); ?></span></span>
+                                <span class="date"><?php echo __('published at'); ?> <span itemprop="datePublished"><?php echo $block->getPublishDate($item); ?></span></span>
+                            </div>
+                        </div>
+                        <?php if ($item->getImage() && $block->canShowImage()): ?>
+                        <div class="item-image">
+                            <a class="item-image" href="<?php echo $this->getItemUrl($item); ?>">
+                                <span itemprop="thumbnailUrl"><img src="<?php echo $block->getImageUrl($item, 100) ?>" alt="<?php echo $item->getTitle() ?>" title="<?php echo $item->getTitle() ?>" /></span>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else : ?>
+            <p><?php echo __('There are no latest news!') ?></p>
+        <?php endif; ?>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "name": "piuga/redkiwi-news",
+  "description": "Magento 2 News module",
+  "require": {
+    "magento/framework": "100.1.*",
+    "magento/module-ui": "100.1.*",
+    "magento/module-widget": "100.1.*"
+  },
+  "type": "magento2-module",
+  "version": "1.2.0",
+  "license": 
+    [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Redkiwi\\News\\": ""
+    }
+  }
+}

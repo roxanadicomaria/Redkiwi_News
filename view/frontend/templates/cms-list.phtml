@@ -1,0 +1,22 @@
+<?php
+$itemsCollection = $block->getCollection();
+if (count($itemsCollection) > 0) : ?>
+<div class="block cms-list">
+    <?php if ($block->getBoxTitle()): ?>
+    <div class="block-title">
+        <span id="block-compare-heading" role="heading" aria-level="2"><?php echo $block->getBoxTitle(); ?></span>
+    </div>
+    <?php endif; ?>
+    <ul>
+    <?php foreach ($itemsCollection as $item) : ?>
+        <li>
+            <?php if ($item['link']): ?>
+                <a href="<?php echo $this->getItemUrl($item); ?>"><?php echo $item['title']; ?></a>
+            <?php else: ?>
+                <?php echo $item['title']; ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; 

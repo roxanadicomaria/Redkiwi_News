@@ -1,0 +1,22 @@
+<?php
+/** @var \Redkiwi\News\Block\Adminhtml\Category\AssignProducts $block */
+/** @var \Redkiwi\News\Block\Adminhtml\Category\Tab\Product $blockGrid */
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?php  echo $block->getGridHtml(); ?>
+<input type="hidden" name="category_news" id="in_category_news" data-form-part="redkiwi_news_category_form" value="" />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Redkiwi_News/js/category/assign-news": {
+                "selectedNews": <?php /* @escapeNotVerified */ echo $block->getNewsJson(); ?>,
+                "gridJsObjectName": <?php /* @escapeNotVerified */ echo '"' . $gridJsObjectName . '"' ?: '{}'; ?>
+            }
+        }
+    }
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Redkiwi\News\Api\NewsRepositoryInterface" type="Redkiwi\News\Model\NewsRepository" />
+    <preference for="Redkiwi\News\Api\Data\NewsInterface" type="Redkiwi\News\Model\News" />
+    <preference for="Redkiwi\News\Api\Data\NewsSearchResultInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Redkiwi\News\Api\CategoryRepositoryInterface" type="Redkiwi\News\Model\CategoryRepository" />
+    <preference for="Redkiwi\News\Api\Data\CategoryInterface" type="Redkiwi\News\Model\Category" />
+    <preference for="Redkiwi\News\Api\Data\CategorySearchResultInterface" type="Magento\Framework\Api\SearchResults" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="redkiwi_news_news_listing_data_source" xsi:type="string">Redkiwi\News\Model\ResourceModel\News\Grid\Collection</item>
+                <item name="redkiwi_news_category_listing_data_source" xsi:type="string">Redkiwi\News\Model\ResourceModel\Category\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Redkiwi\News\Model\ResourceModel\News\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">redkiwi_news_items</argument>
+            <argument name="eventPrefix" xsi:type="string">redkiwi_news_items_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">news_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Redkiwi\News\Model\ResourceModel\News</argument>
+        </arguments>
+    </type> 
+    <type name="Redkiwi\News\Model\ResourceModel\Category\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">redkiwi_news_categories</argument>
+            <argument name="eventPrefix" xsi:type="string">redkiwi_news_category_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">category_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Redkiwi\News\Model\ResourceModel\Category</argument>
+        </arguments>
+    </type>     
+    <type name="Redkiwi\News\Model\ImageUploader">
+        <arguments>
+            <argument name="basePath" xsi:type="string">news/item</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Redkiwi\News\Model\FileUploader">
+        <arguments>
+            <argument name="basePath" xsi:type="string">news/file</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="doc" xsi:type="string">doc</item>
+                <item name="docx" xsi:type="string">docx</item>
+                <item name="pdf" xsi:type="string">pdf</item>
+                <item name="txt" xsi:type="string">txt</item>
+                <item name="xml" xsi:type="string">xml</item>
+                <item name="xls" xsi:type="string">xls</item>
+                <item name="odt" xsi:type="string">odt</item>
+                <item name="rar" xsi:type="string">rar</item>
+                <item name="zip" xsi:type="string">zip</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

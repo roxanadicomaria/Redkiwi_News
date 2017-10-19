@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="redkiwi_best_sold_products" view_id="redkiwi_best_sold_products" class="Redkiwi\News\Model\Indexer\BestSold">
+        <title translate="true">Best Sold Products</title>
+        <description translate="true">Redkiwi custom index for best sold products</description>
+    </indexer>
+</config>

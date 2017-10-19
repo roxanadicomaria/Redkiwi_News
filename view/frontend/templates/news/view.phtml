@@ -1,0 +1,44 @@
+<?php $news = $block->getCurrentNews(); ?>
+<div class="news-view" itemscope itemtype="http://schema.org/Article">
+    <div class="no-display" itemprop="name"><?php echo $news->getTitle() ?></div>
+
+    <div class="news-image">
+         <span itemprop="image"><img src="<?php echo $news->getImageUrl() ?>" alt="<?php echo $news->getTitle() ?>" title="<?php echo $news->getTitle() ?>" /></span>
+    </div>
+    <div class="news-content" itemprop="articleBody">
+        <?php echo $block->getContent($news); ?>
+        <?php if ($news->getFile()): ?>
+        <div class="more-info">
+            <?php echo __('For more info <a href="%1" target="_blank">download this</a> file.', $news->getFileUrl()); ?>
+        </div>
+        <?php endif; ?>
+    </div>
+    <?php echo $block->getChildHtml('redkiwi.news.gallery'); ?>
+    <div class="author-date">
+        <span class="author"><?php echo __('by'); ?> <span itemprop="author"><?php echo $news->getAuthor(); ?></span></span>
+        <span class="date"><span itemprop="datePublished"><?php echo __('published at'); ?> <?php echo $block->getPublishDate($news); ?></span></span>
+    </div>
+</div>
+<div class="share-wrapper">
+    <?php if ($block->canShareOn('facebook')): ?>
+        <!-- Facebook share -->  
+        <div class="fb-share-button" data-href="<?php echo $block->getCurrentSeoLink(); ?>" data-layout="button" data-size="small" data-mobile-iframe="true"></div>
+    <?php endif;
+    if ($block->canShareOn('twitter')): ?>
+        <!-- Twitter share -->
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<?php echo $news->getTitle(); ?>">Tweet</a>
+    <?php endif;
+    if ($block->canShareOn('google')): ?>
+        <!-- Google+ Share -->
+        <div class="g-plus" data-action="share" data-annotation="none"></div>    
+    <?php endif;
+    if ($block->canShareOn('pinterest')): ?>
+        <!-- Pinterest Share -->
+        <a href="https://www.pinterest.com/pin/create/button/">
+            <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+        </a> 
+    <?php endif; ?>
+</div>
+<?php if($block->canComment()): ?>
+<div class="fb-comments" data-href="<?php echo $block->getCurrentLink(); ?>" data-width="100%" data-numposts="5"></div>
+<?php endif; 

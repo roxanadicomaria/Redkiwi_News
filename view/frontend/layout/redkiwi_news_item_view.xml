@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Redkiwi_News extension
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Redkiwi
+ * @package   Redkiwi_News
+ * @copyright Copyright (c) 2017
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="news_default" />
+    <body>
+        <referenceContainer name="after.body.start">
+            <referenceBlock name="head.additional">
+                <block class="Redkiwi\News\Block\View" name="redkiwi.news.social.meta" template="Redkiwi_News::news/view/social.phtml" />
+            </referenceBlock>
+            <block class="Redkiwi\News\Block\View" name="redkiwi.facebook.script" template="Redkiwi_News::news/view/facebook-script.phtml" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Redkiwi\News\Block\View" name="redkiwi.news.view" template="Redkiwi_News::news/view.phtml">
+                <block class="Redkiwi\News\Block\Gallery" name="redkiwi.news.gallery" template="Redkiwi_News::news/view/gallery.phtml" />
+            </block>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="redkiwi.news.social.body.end" template="Redkiwi_News::news/view/social-body-end.phtml" />
+        </referenceContainer>
+    </body>
+</page>
+
+

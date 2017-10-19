@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Redkiwi_News::news" title="News" translate="title" module="Redkiwi_News" sortOrder="30" parent="Magento_Backend::content" resource="Redkiwi_News::news"/>
+        <add id="Redkiwi_News::news_grid" title="News Items" translate="title" module="Redkiwi_News" sortOrder="10" parent="Redkiwi_News::news" action="redkiwi_news/news" resource="Redkiwi_News::news"/>
+        <add id="Redkiwi_News::news_add" title="Add News" translate="title" module="Redkiwi_News" sortOrder="20" parent="Redkiwi_News::news" action="redkiwi_news/news/create" resource="Redkiwi_News::save_item"/>
+        <add id="Redkiwi_News::settings" title="Settings" translate="title" module="Redkiwi_News" sortOrder="30" parent="Redkiwi_News::news" action="adminhtml/system_config/edit/section/redkiwi_news" resource="Redkiwi_News::system_config" />
+        <add id="Redkiwi_News::category_grid" title="Categories" translate="title" module="Redkiwi_News" sortOrder="24" parent="Redkiwi_News::news" action="redkiwi_news/category" resource="Redkiwi_News::news"/>
+        <add id="Redkiwi_News::category_add" title="Add Category" translate="title" module="Redkiwi_News" sortOrder="26" parent="Redkiwi_News::news" action="redkiwi_news/category/create" resource="Redkiwi_News::save_category"/>
+    </menu>
+</config>

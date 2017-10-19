@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="redkiwi_news_flush_cache" instance="Redkiwi\News\Cron\FlushCache" method="execute">
+            <schedule>0 1 * * 7</schedule> <!-- i.e. every Sunday at 1 AM -->
+        </job>
+    </group>
+</config>

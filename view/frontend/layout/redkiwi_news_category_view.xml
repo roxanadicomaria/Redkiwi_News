@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="news_default" />    
+    <body>
+        <referenceContainer name="content">
+            <block class="Redkiwi\News\Block\Category" name="redkiwi.news.category" template="Redkiwi_News::news/category.phtml" />
+            <block class="Redkiwi\News\Block\ItemsList" name="redkiwi.news.list" template="Redkiwi_News::news/list.phtml" />
+        </referenceContainer>
+    </body>
+</page>

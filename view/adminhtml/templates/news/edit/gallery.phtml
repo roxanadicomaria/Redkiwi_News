@@ -1,0 +1,84 @@
+<div id="manage-options-panel">
+    <table class="data-table admin__control-table">
+        <thead>
+            <tr id="form-options-table">
+                <th class="col-draggable"></th>                
+                <th><?php /* @escapeNotVerified */ echo __('Title') ?></th>
+                <th><?php /* @escapeNotVerified */ echo __('Visible') ?></th>
+                <th><?php /* @escapeNotVerified */ echo __('Link') ?></th>
+                <th><?php /* @escapeNotVerified */ echo __('Image') ?></th>
+                <th class="col-delete">&nbsp;</th>
+            </tr>
+        </thead>
+        <?php $columnstotal = 6; //number of total columns ?>
+        <tbody data-role="options-container" class="ignore-validate"></tbody>
+        <tfoot>
+        <tr>
+            <th colspan="<?php /* @escapeNotVerified */ echo $columnstotal; ?>" class="validation">
+                <input type="hidden" class="required-dropdown-options-entry" name="dropdown_options_validation"/>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="<?php /* @escapeNotVerified */ echo $columnstotal; ?>" class="col-actions-add">
+                <button id="add_new_option_button" title="<?php /* @escapeNotVerified */ echo __('Add Gallery Item'); ?>"
+                    type="button" class="action- scalable add">
+                     <span><?php /* @escapeNotVerified */ echo __('Add Gallery Item'); ?></span>
+                </button>
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+    <input type="hidden" id="option-count-check" value="" />
+    <?php $formId = 'redkiwi_news_news_form'; ?>
+</div>
+<script id="row-template" type="text/x-magento-template">
+     <tr>
+        <td class="col-draggable">
+            <div data-role="draggable-handle" class="draggable-handle" title="<?php /* @escapeNotVerified */ echo __('Sort Gallery Item'); ?>"></div>
+            <input data-role="order" type="hidden" name="gallery[order][<%- data.id %>]"  value="<%- data.sort_order %>" data-form-part="<?php echo $formId; ?>">
+        </td>            
+        <td class="col-<%- data.id %>">
+            <input name="gallery[value][<%- data.id %>][title]" value="<%- data.title %>" class="input-text required-option" type="text" data-form-part="<?php echo $formId; ?>" />
+        </td>
+        <td class="visible">
+            <input name="gallery[value][<%- data.id %>][visible]" value="1" <%- data.checked %> class="" type="checkbox" data-form-part="<?php echo $formId; ?>" />
+        </td>
+        <td class="link">
+            <input name="gallery[value][<%- data.id %>][link]" value="<%- data.link %>" class="input-text" type="text" data-form-part="<?php echo $formId; ?>" />
+        </td>
+        <td class="gallery-file">
+            <input name="gallery_<%- data.id %>_image" value="<%- data.image %>" class="" type="file" id="gallery_<%- data.id %>_image" data-form-part="<?php echo $formId; ?>" /><br/>
+            <a href="<%- data.image_url %>" onclick="imagePreview('image-<%- data.id %>'); return false;"><img src="<%- data.image_url %>" id="image-<%- data.id %>" title="<%- data.title %>" alt="<%- data.title %>" height="50" class="small-image-preview v-middle"></a>
+        </td>
+        <td id="delete_button_container_<%- data.id %>" class="col-delete">
+            <input type="hidden" class="delete-flag" name="gallery[delete][<%- data.id %>]" value="" data-form-part="<?php echo $formId; ?>" />
+            <button id="delete_button_<%- data.id %>" title="<?php /* @escapeNotVerified */ echo __('Delete') ?>" type="button"
+                class="action- scalable delete delete-option">
+                <span><?php /* @escapeNotVerified */ echo __('Delete') ?></span>
+            </button>
+        </td>
+    </tr>
+</script>
+<?php
+$values = [];
+foreach($block->getOptionValues() as $value) {
+    array_push($values, $value);
+}
+$lastKey = $block->getLastKey($values);
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Redkiwi_News/js/news/gallery": {
+                "attributesData": <?php /* @escapeNotVerified */ echo json_encode($values); ?>,
+                "isSortable":  1,
+                "isReadOnly": 0,
+                "lastKey": <?php echo $lastKey; ?>
+            }
+        }
+    }
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>

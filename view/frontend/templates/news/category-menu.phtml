@@ -1,0 +1,15 @@
+<?php $categories = $block->getCategories(); 
+if (count($categories)): ?>
+<div class="block block-categories-menu">    
+    <div class="block-title">
+        <span id="block-compare-heading" role="heading" aria-level="2"><?php echo __('News categories'); ?></span>
+    </div>
+    <ul class="category-menu">
+    <?php foreach ($categories as $category): ?>
+        <li>
+            <a href="<?php echo $block->getCategoryLink($category); ?>"><?php echo $category->getTitle(); ?></a>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; 
